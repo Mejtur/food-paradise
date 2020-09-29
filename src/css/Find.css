@@ -1,0 +1,72 @@
+.find {
+  position: fixed; /* Stay in place */
+  z-index: 3; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+input[type="text"] {
+  font-size: 42px;
+  border: 0;
+  width: 80%;
+  border-bottom: 1px;
+  background: none;
+  font-weight: 600;
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+input[type="text"]::placeholder {
+  color: #a1a1a1;
+}
+
+.find__container button {
+  color: #adadad;
+  border: none;
+  background: none;
+  font-size: 32px;
+  padding-right: 10px;
+}
+
+.find__container {
+  color: #a1a1a1;
+  padding-bottom: 20px;
+  margin: 20% auto;
+  width: 60%;
+  border-bottom: 1px solid #a1a1a1;
+}
+
+.find__close {
+  position: relative;
+  left: 98%;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+@media (max-width: 650px) {
+  input[type="text"] {
+    font-size: 32px;
+  }
+
+  .find__container button {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 450px) {
+  input[type="text"] {
+    font-size: 24px;
+  }
+
+  .find__container button {
+    font-size: 18px;
+  }
+
+  .find__container {
+    width: 80%;
+  }
+}

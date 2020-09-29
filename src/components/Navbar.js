@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../css/Navbar.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 import {
@@ -9,17 +9,21 @@ import {
   FaWindowClose,
 } from "react-icons/fa";
 import logo from "../images/logo.png";
+import Find from "./Find";
+import { RecipeContext } from "../context/RecipeContext";
 
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
+  const { findIsOpen, setFindIsOpen } = useContext(RecipeContext);
 
   return (
     <>
+      {findIsOpen && <Find />}
       <div className="navbar">
         <div className="navbar__login">
           <GiHamburgerMenu
             className="navbar__hamburgerIcon"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
           />
           <p>
             <span className="navbar__link">Log-in</span>/
@@ -32,14 +36,16 @@ function Navbar() {
           <FaFacebookSquare className="navbar__icon" />
           <FaTwitterSquare className="navbar__icon" />
           <FaInstagramSquare className="navbar__icon" />
-          <p className="navbar__search">
+          <p className="navbar__search" onClick={() => setFindIsOpen(true)}>
             <FaSearch />
           </p>
         </div>
       </div>
       <div
         className={
-          isOpen ? "sidebar__hamburgerColumn" : "sidebar__hamburgerColumn hide"
+          sidebarIsOpen
+            ? "sidebar__hamburgerColumn"
+            : "sidebar__hamburgerColumn hide"
         }
       >
         <img src={logo} alt="logo" />
@@ -53,7 +59,7 @@ function Navbar() {
         <FaWindowClose
           className="close"
           onClick={() => {
-            setIsOpen(!isOpen);
+            setSidebarIsOpen(!sidebarIsOpen);
           }}
         />
         <FaFacebookSquare className="sidebar__icon" />

@@ -1,0 +1,35 @@
+.hero {
+  height: 50vh;
+  background-image: url("../images/hero.png");
+  width: 100%;
+  background-size: 75% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero__title {
+  text-align: center;
+  padding-top: 60px;
+  font-size: 4rem;
+  padding-bottom: 20px;
+}
+
+.hero__container {
+  border: 2px solid #525252;
+  width: 30%;
+  cursor: pointer;
+  padding: 5px;
+  margin: 0 auto;
+  background-color: white;
+  opacity: 0.3;
+  color: #707070;
+}
+
+.hero__container:hover {
+  color: black;
+}
+
+.hero__searchIcon {
+  padding: 5px;
+  font-size: 32px;
+}
