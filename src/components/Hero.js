@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "../css/Hero.css";
 import { FaSearch } from "react-icons/fa";
 import Find from "./Find";

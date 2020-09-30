@@ -5,10 +5,10 @@
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
-input[type="text"] {
+.find input[type="text"] {
   font-size: 42px;
   border: 0;
   width: 80%;

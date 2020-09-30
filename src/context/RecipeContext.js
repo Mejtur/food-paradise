@@ -4,8 +4,20 @@ export const RecipeContext = createContext();
 
 export const RecipeContextProvider = ({ children }) => {
   const [findIsOpen, setFindIsOpen] = useState(false);
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(true);
+
   return (
-    <RecipeContext.Provider value={{ setFindIsOpen, findIsOpen }}>
+    <RecipeContext.Provider
+      value={{
+        setFindIsOpen,
+        findIsOpen,
+        sidebarIsOpen,
+        setSidebarIsOpen,
+        loginOpen,
+        setLoginOpen,
+      }}
+    >
       {children}
     </RecipeContext.Provider>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import "../css/Navbar.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 import {
@@ -6,28 +6,36 @@ import {
   FaTwitterSquare,
   FaInstagramSquare,
   FaSearch,
-  FaWindowClose,
 } from "react-icons/fa";
-import logo from "../images/logo.png";
 import Find from "./Find";
 import { RecipeContext } from "../context/RecipeContext";
+import Sidebar from "./Sidebar";
+import Login from "./Login";
 
 function Navbar() {
-  const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
-  const { findIsOpen, setFindIsOpen } = useContext(RecipeContext);
+  const {
+    findIsOpen,
+    setFindIsOpen,
+    setSidebarIsOpen,
+    loginOpen,
+    setLoginOpen,
+  } = useContext(RecipeContext);
 
   return (
     <>
+      {loginOpen && <Login />}
       {findIsOpen && <Find />}
       <div className="navbar">
         <div className="navbar__login">
           <GiHamburgerMenu
             className="navbar__hamburgerIcon"
-            onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
+            onClick={() => setSidebarIsOpen(true)}
           />
           <p>
-            <span className="navbar__link">Log-in</span>/
-            <span className="navbar__link">Sign-up</span>
+            <span className="navbar__link" onClick={() => setLoginOpen(true)}>
+              Log-in
+            </span>
+            /<span className="navbar__link">Sign-up</span>
           </p>
         </div>
         <p className="navbar__title">Food Paradise</p>
@@ -41,31 +49,7 @@ function Navbar() {
           </p>
         </div>
       </div>
-      <div
-        className={
-          sidebarIsOpen
-            ? "sidebar__hamburgerColumn"
-            : "sidebar__hamburgerColumn hide"
-        }
-      >
-        <img src={logo} alt="logo" />
-        <ul>
-          <li>RECIPES AND MENUS</li>
-          <li>EXPERT ADVICE</li>
-          <li>INGREDIENTS</li>
-          <li>VIDEO</li>
-        </ul>
-        <p>Follow Food Paradise</p>
-        <FaWindowClose
-          className="close"
-          onClick={() => {
-            setSidebarIsOpen(!sidebarIsOpen);
-          }}
-        />
-        <FaFacebookSquare className="sidebar__icon" />
-        <FaTwitterSquare className="sidebar__icon" />
-        <FaInstagramSquare className="sidebar__icon" />
-      </div>
+      <Sidebar />
     </>
   );
 }
