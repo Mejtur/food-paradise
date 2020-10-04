@@ -1,0 +1,16 @@
+.recipeContent__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+}
+
+hr {
+  margin: 30px auto;
+  width: 60%;
+  color: #707070;
+}
+
+@media (max-width: 900px) {
+  .recipeContent__container {
+    grid-template-columns: 1fr;
+  }
+}

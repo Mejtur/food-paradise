@@ -4,7 +4,7 @@
   height: 100vh;
   top: 0;
   z-index: 1;
-  position: absolute;
+  position: fixed;
   transition: transform 1s ease;
   transform: translate(0);
   text-align: center;
@@ -45,6 +45,10 @@
   padding-top: 20px;
 }
 
+.sidebar__loginContainer:hover {
+  color: #ff0900;
+}
+
 .sidebar__loginContainer > p {
   width: 40%;
   padding: 5px;
@@ -70,6 +74,16 @@
 @media (max-width: 600px) {
   .sidebar__hamburgerColumn {
     width: 100%;
-    height: 130vh;
+    height: 140vh;
+  }
+}
+
+@media (max-width: 450px) {
+  .sidebar__hamburgerColumn > p {
+    padding-top: 10px;
+  }
+
+  .sidebar__hamburgerColumn > ul > li {
+    padding: 10px 0;
   }
 }

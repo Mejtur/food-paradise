@@ -33,9 +33,8 @@ function Navbar() {
           />
           <p>
             <span className="navbar__link" onClick={() => setLoginOpen(true)}>
-              Log-in
+              Log-in /Sign up
             </span>
-            /<span className="navbar__link">Sign-up</span>
           </p>
         </div>
         <p className="navbar__title">Food Paradise</p>

@@ -39,12 +39,12 @@ function Sidebar() {
       <FaFacebookSquare className="sidebar__icon" />
       <FaTwitterSquare className="sidebar__icon" />
       <FaInstagramSquare className="sidebar__icon" />
-      <div className="sidebar__loginContainer">
+      <div
+        className="sidebar__loginContainer"
+        onClick={() => setLoginOpen(true)}
+      >
         <p>
-          <span className="sidebar__link" onClick={() => setLoginOpen(true)}>
-            Log-in
-          </span>
-          /<span className="sidebar__link">Sign-up</span>
+          <span className="sidebar__link">Log-in/ Sign-up</span>
         </p>
       </div>
     </div>
