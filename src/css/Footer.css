@@ -1,0 +1,36 @@
+.footer {
+  background-color: #707070;
+  width: 100%;
+  text-align: center;
+}
+
+.footer__info {
+  padding-top: 40px;
+  display: flex;
+}
+
+.footer__title {
+  color: #ff0900;
+  font-size: 42px;
+}
+
+.footer__col {
+  flex: 1;
+}
+
+.footer__icon {
+  padding: 20px;
+  color: #ff0900;
+  font-size: 24px;
+}
+
+.footer__copy {
+  padding: 20px 0;
+  font-size: 10px;
+}
+
+@media (max-width: 500px) {
+  .footer__info {
+    display: block;
+  }
+}

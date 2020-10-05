@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { database } from "../firebase";
 import "../css/RecipeContent.css";
 import SingleRecipe from "./SingleRecipe";
+import { Link } from "react-router-dom";
 
 function RecipeContent() {
   const [data, setData] = useState(null);
@@ -14,7 +15,6 @@ function RecipeContent() {
       setData(dbdata);
     });
   }, []);
-  console.log(data);
 
   return (
     <div className="recipeContent">
@@ -22,17 +22,21 @@ function RecipeContent() {
       <div className="recipeContent__container">
         {data
           ? data.value.map((recipe) => (
-              <SingleRecipe
-                key={recipe.id}
-                name={recipe.name}
-                calories={recipe.calories}
-                image={recipe.image}
-                ingredients={recipe.ingredients}
-                fat={recipe.fat}
-                protein={recipe.protein}
-                carbs={recipe.carbs}
-                description={recipe.instructions}
-              />
+              <Link
+                to={`recipes/${recipe.id}`}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <SingleRecipe
+                  key={recipe.id}
+                  name={recipe.name}
+                  calories={recipe.calories}
+                  image={recipe.image}
+                  fat={recipe.fat}
+                  protein={recipe.protein}
+                  carbs={recipe.carbs}
+                  description={recipe.instructions}
+                />
+              </Link>
             ))
           : "Loading..."}
       </div>

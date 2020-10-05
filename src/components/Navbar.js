@@ -11,6 +11,7 @@ import Find from "./Find";
 import { RecipeContext } from "../context/RecipeContext";
 import Sidebar from "./Sidebar";
 import Login from "./Login";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const {
@@ -37,7 +38,9 @@ function Navbar() {
             </span>
           </p>
         </div>
-        <p className="navbar__title">Food Paradise</p>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <p className="navbar__title">Food Paradise</p>
+        </Link>
 
         <div className="navbar__social">
           <FaFacebookSquare className="navbar__icon" />
