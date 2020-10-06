@@ -12,6 +12,7 @@ import { RecipeContext } from "../context/RecipeContext";
 import Sidebar from "./Sidebar";
 import Login from "./Login";
 import { Link } from "react-router-dom";
+import { auth } from "../firebase";
 
 function Navbar() {
   const {
@@ -19,6 +20,8 @@ function Navbar() {
     setFindIsOpen,
     setSidebarIsOpen,
     loginOpen,
+    user,
+    setUser,
     setLoginOpen,
   } = useContext(RecipeContext);
 
@@ -33,9 +36,26 @@ function Navbar() {
             onClick={() => setSidebarIsOpen(true)}
           />
           <p>
-            <span className="navbar__link" onClick={() => setLoginOpen(true)}>
-              Log-in /Sign up
-            </span>
+            {user ? (
+              <span
+                className="navbar__link"
+                onClick={() => {
+                  setUser(null);
+                  auth.signOut();
+                }}
+              >
+                Logout {user}
+              </span>
+            ) : (
+              <span
+                className="navbar__link"
+                onClick={() => {
+                  setLoginOpen(true);
+                }}
+              >
+                Log-in /Sign up
+              </span>
+            )}
           </p>
         </div>
         <Link to="/" style={{ textDecoration: "none" }}>

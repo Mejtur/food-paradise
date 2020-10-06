@@ -6,6 +6,7 @@ import { RecipeContextProvider } from "./context/RecipeContext";
 import RecipeContent from "./components/RecipeContent";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import RecipeInfo from "./components/RecipeInfo";
+import Favourites from "./components/Favourites";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
           </Route>
           <Route path="/recipes/:id">
             <RecipeInfo />
+          </Route>
+          <Route path="/favourites">
+            <Favourites />
           </Route>
         </RecipeContextProvider>
       </Router>

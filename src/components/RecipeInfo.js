@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../css/RecipeInfo.css";
 import { useParams } from "react-router-dom";
-import { database } from "../firebase";
+import { db, auth, database } from "../firebase";
 import Footer from "./Footer";
-
+import { MdFavorite } from "react-icons/md";
+import { RecipeContext } from "../context/RecipeContext";
 function RecipeInfo() {
   let { id } = useParams();
 
+  const [isFavourite, setIsFavourite] = useState(false);
   const [data, setData] = useState();
+  const { user } = useContext(RecipeContext);
 
   useEffect(() => {
     var singleData = database.ref(`value/${id}`);
@@ -17,12 +20,32 @@ function RecipeInfo() {
   }, []);
   console.log(data);
 
+  const addToFavourites = async (data) => {
+    const currentUser = await auth.currentUser;
+
+    const databaseRef = await database
+      .ref(currentUser.uid)
+      .child("favourites")
+      .child(id)
+      .set(data);
+  };
+
   return (
     <div className="recipeInfo">
       {data ? (
         <div className="recipeInfo__container">
           <div className="recipeInfo__nav">
-            <h1 className="recipeInfo__title">{data.name}</h1>
+            <div className="recipeInfo__header">
+              <h1 className="recipeInfo__title">{data.name}</h1>
+              <p
+                className="recipeInfo__favourites"
+                onClick={() => {
+                  addToFavourites(data);
+                }}
+              >
+                Add to favourites <MdFavorite />
+              </p>
+            </div>
             <div className="recipeInfo__navInfo">
               <div className="recipeInfo__flex">
                 <p>Rating: </p>
@@ -50,7 +73,7 @@ function RecipeInfo() {
               <h2 className="col-title">Ingredients:</h2>
               <ul>
                 {data.ingredients.map((ingredient) => (
-                  <li>{ingredient}</li>
+                  <li key={ingredient}>{ingredient}</li>
                 ))}
               </ul>
             </div>

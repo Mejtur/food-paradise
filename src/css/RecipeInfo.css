@@ -18,6 +18,16 @@
   padding: 0 10px;
 }
 
+.recipeInfo__icon {
+  font-size: 30px;
+  padding-left: 20px;
+  color: #ff0900;
+}
+
+.recipeInfo__favourites {
+  cursor: pointer;
+}
+
 .recipeInfo__flex > p {
   padding: 5px;
 }

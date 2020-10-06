@@ -8,11 +8,17 @@ import {
 } from "react-icons/fa";
 import logo from "../images/logo.png";
 import { RecipeContext } from "../context/RecipeContext";
+import { Link } from "react-router-dom";
+import { auth } from "../firebase";
 
 function Sidebar() {
-  const { sidebarIsOpen, setSidebarIsOpen, setLoginOpen } = useContext(
-    RecipeContext
-  );
+  const {
+    sidebarIsOpen,
+    setSidebarIsOpen,
+    setLoginOpen,
+    user,
+    setUser,
+  } = useContext(RecipeContext);
 
   return (
     <div
@@ -24,8 +30,16 @@ function Sidebar() {
     >
       <img src={logo} alt="logo" />
       <ul>
-        <li>RECIPES AND MENUS</li>
-        <li>EXPERT ADVICE</li>
+        <Link to="/" style={{ textDecoration: "none" }} className="link">
+          <li>RECIPES AND MENUS</li>
+        </Link>
+        <Link
+          to="/favourites"
+          style={{ textDecoration: "none" }}
+          className="link"
+        >
+          <li>FAVOURITES</li>
+        </Link>
         <li>INGREDIENTS</li>
         <li>VIDEO</li>
       </ul>
@@ -44,7 +58,26 @@ function Sidebar() {
         onClick={() => setLoginOpen(true)}
       >
         <p>
-          <span className="sidebar__link">Log-in/ Sign-up</span>
+          {user ? (
+            <span
+              className="navbar__link"
+              onClick={() => {
+                setUser(null);
+                auth.signOut();
+              }}
+            >
+              Logout {user}
+            </span>
+          ) : (
+            <span
+              className="navbar__link"
+              onClick={() => {
+                setLoginOpen(true);
+              }}
+            >
+              Log-in /Sign up
+            </span>
+          )}
         </p>
       </div>
     </div>

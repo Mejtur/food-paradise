@@ -1,0 +1,10 @@
+.favourites {
+  padding-top: 80px;
+  width: 100%;
+}
+
+.favourities__title {
+  text-align: center;
+  color: #ff0900;
+  font-size: 36px;
+}

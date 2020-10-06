@@ -5,7 +5,7 @@ import { RecipeContext } from "../context/RecipeContext";
 import { auth } from "../firebase";
 
 function Login() {
-  const { setLoginOpen } = useContext(RecipeContext);
+  const { setLoginOpen, setUser } = useContext(RecipeContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,6 +17,7 @@ function Login() {
       .catch((error) => alert(error.message))
       .then(() => {
         setLoginOpen(false);
+        setUser(email);
       });
   };
 

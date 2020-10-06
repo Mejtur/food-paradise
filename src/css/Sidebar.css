@@ -20,7 +20,7 @@
   margin: 20px auto;
 }
 
-.sidebar__hamburgerColumn > ul > li {
+.sidebar__hamburgerColumn ul li {
   font-size: 29px;
   font-weight: 600;
   padding: 20px 0;

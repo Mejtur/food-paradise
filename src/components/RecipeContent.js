@@ -16,6 +16,10 @@ function RecipeContent() {
     });
   }, []);
 
+  if (data) {
+    console.log(data.value);
+  }
+
   return (
     <div className="recipeContent">
       <hr />
