@@ -7,7 +7,7 @@ function RecipeContent() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    let ref = database.ref("/");
+    let ref = database.ref("value");
     ref.on("value", (snapshot) => {
       const dbdata = snapshot.val();
       setData(dbdata);
@@ -19,7 +19,7 @@ function RecipeContent() {
       <hr />
       <div className="recipeContent__container">
         {data
-          ? data.value.map((recipe) => (
+          ? data.map((recipe) => (
               <SingleRecipe
                 id={recipe.id}
                 key={recipe.id}

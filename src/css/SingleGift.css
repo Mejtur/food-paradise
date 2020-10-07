@@ -1,0 +1,18 @@
+.singleGift {
+  width: 100%;
+}
+
+.singleGift__image {
+  object-fit: cover;
+  width: 90%;
+}
+
+.singleGift__title {
+  color: #707070;
+  padding: 20px 0;
+}
+
+.singleGift__description {
+  letter-spacing: 0.3px;
+  padding-bottom: 10px;
+}

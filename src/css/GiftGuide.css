@@ -1,0 +1,36 @@
+.giftGuide {
+  padding-top: 120px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.giftGuide__header {
+  text-align: center;
+}
+
+.giftGuide__small {
+  color: #ff0900;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.giftGuide__title {
+  padding-top: 5px;
+  color: #414141;
+  font-size: 42px;
+}
+
+.giftGuide__welcome {
+  padding: 40px;
+}
+
+.giftGuide__logo {
+  width: 80px;
+  padding-bottom: 200px;
+}
+
+.giftGuide__hero {
+  padding-top: 50px;
+  width: 100%;
+  object-fit: cover;
+}

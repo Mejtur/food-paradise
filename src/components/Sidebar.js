@@ -40,8 +40,9 @@ function Sidebar() {
         >
           <li>FAVOURITES</li>
         </Link>
-        <li>INGREDIENTS</li>
-        <li>VIDEO</li>
+        <Link style={{ textDecoration: "none" }} className="link" to="/gift">
+          <li>GIFT GUIDE</li>
+        </Link>
       </ul>
       <p>Follow Food Paradise</p>
       <FaWindowClose
@@ -53,10 +54,7 @@ function Sidebar() {
       <FaFacebookSquare className="sidebar__icon" />
       <FaTwitterSquare className="sidebar__icon" />
       <FaInstagramSquare className="sidebar__icon" />
-      <div
-        className="sidebar__loginContainer"
-        onClick={() => setLoginOpen(true)}
-      >
+      <div className="sidebar__loginContainer">
         <p>
           {user ? (
             <span

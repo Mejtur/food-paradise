@@ -18,7 +18,6 @@ function RecipeInfo() {
       setData(snapchot.val());
     });
   }, []);
-  console.log(data);
 
   const addToFavourites = async (data) => {
     const currentUser = await auth.currentUser;
@@ -28,6 +27,16 @@ function RecipeInfo() {
       .child("favourites")
       .child(id)
       .set(data);
+  };
+
+  const removeFromFavourites = async (data) => {
+    const currentUser = await auth.currentUser;
+
+    const databaseRef = await database
+      .ref(currentUser.uid)
+      .child("favourites")
+      .child(id)
+      .remove();
   };
 
   return (
@@ -45,6 +54,13 @@ function RecipeInfo() {
               >
                 Add to favourites <MdFavorite />
               </p>
+              <p
+                onClick={() => {
+                  removeFromFavourites(data);
+                }}
+              >
+                Remove from favourites
+              </p>
             </div>
             <div className="recipeInfo__navInfo">
               <div className="recipeInfo__flex">
@@ -52,14 +68,14 @@ function RecipeInfo() {
                 {Array(data.rating)
                   .fill()
                   .map((_, i) => (
-                    <p>⭐</p>
+                    <p key={i}>⭐</p>
                   ))}
               </div>
               <div className="recipeInfo__flex">
                 <p>Tags:</p>
                 <div className="recipeInfo__flex">
                   {data.tags.map((tag) => (
-                    <p>{tag} </p>
+                    <p key={tag}>{tag} </p>
                   ))}
                 </div>
               </div>

@@ -14,8 +14,23 @@
   grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
 }
 
+.favourites__notLogged {
+  text-align: center;
+}
 @media (max-width: 900px) {
-  .recipeContent__container {
+  .favourities__content {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .favourities__title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 550px) {
+  .favourities__title {
+    font-size: 18px;
   }
 }

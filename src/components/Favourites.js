@@ -36,21 +36,23 @@ function Favourites() {
       </div>
       <hr />
       <div className="favourities__content">
-        {data
-          ? Object.values(data.favourites).map((recipe) => (
-              <SingleRecipe
-                id={recipe.id}
-                key={recipe.id}
-                name={recipe.name}
-                calories={recipe.calories}
-                image={recipe.image}
-                fat={recipe.fat}
-                protein={recipe.protein}
-                carbs={recipe.carbs}
-                description={recipe.instructions}
-              />
-            ))
-          : "Nicht working"}
+        {data ? (
+          Object.values(data.favourites).map((recipe) => (
+            <SingleRecipe
+              id={recipe.id}
+              key={recipe.id}
+              name={recipe.name}
+              calories={recipe.calories}
+              image={recipe.image}
+              fat={recipe.fat}
+              protein={recipe.protein}
+              carbs={recipe.carbs}
+              description={recipe.instructions}
+            />
+          ))
+        ) : (
+          <h3 className="favourites__notLogged">You need to login first</h3>
+        )}
       </div>
     </div>
   );
