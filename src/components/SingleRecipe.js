@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/SingeRecipe.css";
+import { Link } from "react-router-dom";
 
 function SingleRecipe({
   name,
@@ -9,11 +10,17 @@ function SingleRecipe({
   carbs,
   calories,
   protein,
+  id,
 }) {
   return (
     <div className="singleRecipe">
       <img src={image} alt="no image found" className="singleRecipe__image" />
-      <div className="singleRecipe__title">{name}</div>
+      <Link
+        to={`recipes/${id}`}
+        style={{ textDecoration: "none", color: "black" }}
+      >
+        <div className="singleRecipe__title">{name}</div>
+      </Link>
       <div className="singleRecipe__info">
         {description.substring(0, 120) + "..."}
       </div>

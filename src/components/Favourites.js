@@ -19,42 +19,38 @@ function Favourites() {
 
   useEffect(() => {
     if (uid) {
-      let ref = database.ref(`${uid}/favourites`);
+      let ref = database.ref(`${uid}`);
       ref.on("value", (snapshot) => {
         const dbdata = snapshot.val();
         setData(dbdata);
       });
+    } else {
+      setData(null);
     }
   }, [uid]);
-
-  console.log(data);
 
   return (
     <div className="favourites">
       <div className="favourities__title">
         <h1>My favourities: {user}</h1>
       </div>
+      <hr />
       <div className="favourities__content">
-        <hr />
-        {/* {data
-          ? data.map((recipe) => (
-              <Link
-                to={`recipes/${recipe.id}`}
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                <SingleRecipe
-                  key={recipe.id}
-                  name={recipe.name}
-                  calories={recipe.calories}
-                  image={recipe.image}
-                  fat={recipe.fat}
-                  protein={recipe.protein}
-                  carbs={recipe.carbs}
-                  description={recipe.instructions}
-                />
-              </Link>
+        {data
+          ? Object.values(data.favourites).map((recipe) => (
+              <SingleRecipe
+                id={recipe.id}
+                key={recipe.id}
+                name={recipe.name}
+                calories={recipe.calories}
+                image={recipe.image}
+                fat={recipe.fat}
+                protein={recipe.protein}
+                carbs={recipe.carbs}
+                description={recipe.instructions}
+              />
             ))
-          : "Loading..."} */}
+          : "Nicht working"}
       </div>
     </div>
   );
